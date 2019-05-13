@@ -28,6 +28,8 @@ class Main extends Component {
     destaque: [
       {
         id: 1,
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas auctor libero libero, fringilla faucibus leo sagittis sed. Sed sodales, est vel vulputate rhoncus, dolor turpis vulputate risus,',
         title: 'Irish Coffee',
         img:
           'https://images.unsplash.com/photo-1496560963059-71f771ddb41f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
@@ -37,6 +39,8 @@ class Main extends Component {
       },
       {
         id: 2,
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas auctor libero libero, fringilla faucibus leo sagittis sed. Sed sodales, est vel vulputate rhoncus, dolor turpis vulputate risus,',
         title: 'Vienna',
         img:
           'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
@@ -46,6 +50,8 @@ class Main extends Component {
       },
       {
         id: 3,
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas auctor libero libero, fringilla faucibus leo sagittis sed. Sed sodales, est vel vulputate rhoncus, dolor turpis vulputate risus,',
         title: 'Affogato',
         img: 'https://www.dietdoctor.com/wp-content/uploads/2016/06/DD-183.jpg',
         marked: true,
@@ -56,7 +62,12 @@ class Main extends Component {
     place: [
       {
         id: 1,
+        logo:
+          'https://instagram.fcpq4-1.fna.fbcdn.net/vp/34284900ef1ffc3c704e0b4d50bf4246/5D76B1A0/t51.2885-19/s150x150/60022882_318868829012972_9048317527876173824_n.jpg?_nc_ht=instagram.fcpq4-1.fna.fbcdn.net',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas auctor libero libero, fringilla faucibus leo sagittis sed. Sed sodales, est vel vulputate rhoncus, dolor turpis vulputate risus,',
         title: 'Irish Coffee',
+        local: 'Bairro tal',
         img:
           'https://images.unsplash.com/photo-1519608113288-6fc3b92c30ab?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80',
         marked: true,
@@ -64,7 +75,12 @@ class Main extends Component {
       },
       {
         id: 2,
+        logo:
+          'https://instagram.fcpq4-1.fna.fbcdn.net/vp/f10b86fe315e62f297dc57f61b8f9d67/5D5EC234/t51.2885-19/s150x150/59039773_398418957682743_5176407083217584128_n.jpg?_nc_ht=instagram.fcpq4-1.fna.fbcdn.net',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas auctor libero libero, fringilla faucibus leo sagittis sed. Sed sodales, est vel vulputate rhoncus, dolor turpis vulputate risus,',
         title: 'Vienna',
+        local: 'Bairro tal',
         img:
           'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
         marked: false,
@@ -72,7 +88,11 @@ class Main extends Component {
       },
       {
         id: 3,
+        logo: 'https://facebook.github.io/react/logo-og.png',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas auctor libero libero, fringilla faucibus leo sagittis sed. Sed sodales, est vel vulputate rhoncus, dolor turpis vulputate risus,',
         title: 'Affogato',
+        local: 'Bairro tal',
         img: 'https://www.dietdoctor.com/wp-content/uploads/2016/06/DD-183.jpg',
         marked: true,
         likes: 7893,

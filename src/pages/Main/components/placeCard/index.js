@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
-import { View, ImageBackground, Text } from 'react-native';
+import {
+  View, ImageBackground, Text, Image,
+} from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -25,8 +27,22 @@ class Card extends Component {
       >
         <View style={styles.card}>
           <View style={styles.containerTitle}>
-            <Icon name="map-marker" size={18} color="#ffff" />
+            <Image
+              source={{
+                uri: `${this.props.destaque.item.logo}`,
+              }}
+              style={styles.logo}
+            />
             <Text style={styles.title}>{this.props.destaque.item.title}</Text>
+          </View>
+
+          <View style={styles.containerTitle}>
+            <Icon name="map-marker" size={16} color="#ffff" />
+            <Text style={styles.local}>{this.props.destaque.item.local}</Text>
+          </View>
+
+          <View style={styles.containerTitle}>
+            <Text style={styles.description}>{this.props.destaque.item.description}</Text>
           </View>
 
           <View style={styles.containerLikes}>

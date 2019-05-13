@@ -9,6 +9,11 @@ const styles = StyleSheet.create({
   containerLikes: {
     flexDirection: 'row',
   },
+  logo: {
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+  },
   likes: {
     flex: 1,
     flexDirection: 'row',
@@ -41,6 +46,23 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     letterSpacing: -0.29,
     lineHeight: 20,
+  },
+  description: {
+    color: '#bec2ce',
+    fontFamily: 'Poppins',
+    fontSize: 14,
+    fontWeight: '400',
+    letterSpacing: -0.09,
+    marginBottom: 10,
+    lineHeight: 18,
+  },
+  local: {
+    color: '#bec2ce',
+    fontFamily: 'Poppins',
+    fontSize: 16,
+    fontWeight: '400',
+    letterSpacing: -0.09,
+    marginLeft: 5,
   },
 });
 
