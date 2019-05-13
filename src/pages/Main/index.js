@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 
 import {
-  View, Text, TextInput, Image,
+  View,
+  Text,
+  TextInput,
+  Image,
+  ScrollView,
+  FlatList,
+  ActivityIndicator,
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -9,12 +15,69 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+/* Compoments */
+import Card from './components/card';
+import CardPlaces from './components/placeCard';
+
 import styles from './styles';
 
 class Main extends Component {
   state = {
     raphael: true,
     text: 'Search',
+    destaque: [
+      {
+        id: 1,
+        title: 'Irish Coffee',
+        img:
+          'https://images.unsplash.com/photo-1496560963059-71f771ddb41f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
+        marked: true,
+        likes: 34,
+        icon: 'glass',
+      },
+      {
+        id: 2,
+        title: 'Vienna',
+        img:
+          'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
+        marked: false,
+        likes: 857,
+        icon: 'coffee',
+      },
+      {
+        id: 3,
+        title: 'Affogato',
+        img: 'https://www.dietdoctor.com/wp-content/uploads/2016/06/DD-183.jpg',
+        marked: true,
+        likes: 123,
+        icon: 'beer',
+      },
+    ],
+    place: [
+      {
+        id: 1,
+        title: 'Irish Coffee',
+        img:
+          'https://images.unsplash.com/photo-1519608113288-6fc3b92c30ab?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80',
+        marked: true,
+        likes: 7893,
+      },
+      {
+        id: 2,
+        title: 'Vienna',
+        img:
+          'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
+        marked: false,
+        likes: 7893,
+      },
+      {
+        id: 3,
+        title: 'Affogato',
+        img: 'https://www.dietdoctor.com/wp-content/uploads/2016/06/DD-183.jpg',
+        marked: true,
+        likes: 7893,
+      },
+    ],
   };
 
   render() {
@@ -30,45 +93,31 @@ class Main extends Component {
           <Image
             source={{ uri: 'https://ak6.picdn.net/shutterstock/videos/16216756/thumb/1.jpg' }}
             style={styles.avatar}
+            loadingIndicatorSource={<ActivityIndicator />}
           />
         </View>
+
         <View style={styles.mid}>
           <Text style={styles.title}>Destaque</Text>
-          <View style={styles.midImg}>
-            <Image
-              source={{
-                uri:
-                  'https://images.unsplash.com/photo-1496560963059-71f771ddb41f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
-              }}
-              style={styles.banner}
-            />
-            <Image
-              source={{
-                uri:
-                  'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
-              }}
-              style={styles.banner}
-            />
-          </View>
+          <FlatList
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            data={this.state.destaque}
+            keyExtractor={(item, index) => item.id}
+            renderItem={destaque => <Card key={destaque.id} destaque={destaque} />}
+          />
         </View>
+
         <View style={styles.bottom}>
           <Text style={styles.title}>Discover new places</Text>
-          <View style={styles.card}>
-            <View style={styles.cardTop}>
-              <View style={styles.cardTopLeft}>
-                <Icon name="map-marker" size={16} color="#bec2ce" />
-                <Text style={styles.cardTitle}>Mont Blanc </Text>
-              </View>
-              <Icon name="bookmark" size={16} color="#1e2432" />
-            </View>
-            <Image
-              source={{
-                uri:
-                  'https://images.unsplash.com/photo-1485686531765-ba63b07845a7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1047&q=80',
-              }}
-              style={styles.imgCoffee}
-            />
-          </View>
+
+          <FlatList
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            data={this.state.place}
+            keyExtractor={(item, index) => item.id}
+            renderItem={place => <CardPlaces key={place.id} destaque={place} />}
+          />
         </View>
       </View>
     );
