@@ -104,23 +104,25 @@ class Main extends Component {
     // console.tron.log(this.props);
   }
 
+  top = () => (
+    <View style={styles.top}>
+      <TextInput
+        style={styles.input}
+        onChangeText={text => this.setState({ text })}
+        value={this.state.text}
+      />
+      <Icon style={styles.icon} name="search" size={14} color="#bec2ce" />
+      <Image
+        source={{ uri: 'https://ak6.picdn.net/shutterstock/videos/16216756/thumb/1.jpg' }}
+        style={styles.avatar}
+        loadingIndicatorSource={<ActivityIndicator />}
+      />
+    </View>
+  );
+
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.top}>
-          <TextInput
-            style={styles.input}
-            onChangeText={text => this.setState({ text })}
-            value={this.state.text}
-          />
-          <Icon style={styles.icon} name="search" size={14} color="#bec2ce" />
-          <Image
-            source={{ uri: 'https://ak6.picdn.net/shutterstock/videos/16216756/thumb/1.jpg' }}
-            style={styles.avatar}
-            loadingIndicatorSource={<ActivityIndicator />}
-          />
-        </View>
-
         <View style={styles.mid}>
           <Text style={styles.title}>Destaque</Text>
           <FlatList

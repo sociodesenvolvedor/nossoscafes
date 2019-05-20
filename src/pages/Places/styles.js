@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   containerInfosText: {
     maxWidth: Dimensions.get('window').width / 5,
     justifyContent: 'center',
-    marginLeft: 10,
+    marginLeft: 6,
   },
   containerSobre: {
     backgroundColor: '#f5f6f7',

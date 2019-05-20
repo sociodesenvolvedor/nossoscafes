@@ -102,7 +102,7 @@ class Places extends Component {
 
   render() {
     return (
-      <ScrollView showsVerticalScrollIndicator>
+      <ScrollView showsVerticalScrollIndicator={false}>
         {this.modal()}
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           <Image
@@ -239,6 +239,13 @@ class Places extends Component {
                 <View style={styles.containerInfosText}>
                   <Text style={styles.infosTitle}>Email</Text>
                   <Text style={styles.infoTextDescripiton}>contato@site.com.br</Text>
+                </View>
+              </View>
+              <View style={styles.containerInfosDescription}>
+                <Icon style={styles.icon} name="clock-o" size={22} color="#bec2ce" />
+                <View style={styles.containerInfosText}>
+                  <Text style={styles.infosTitle}>Hórarios</Text>
+                  <Text style={styles.infoTextDescripiton}>Seg-Sab 8h00 às 22h00</Text>
                 </View>
               </View>
             </ScrollView>
