@@ -100,6 +100,10 @@ class Main extends Component {
     ],
   };
 
+  componentWillMount() {
+    // console.tron.log(this.props);
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -124,7 +128,9 @@ class Main extends Component {
             showsHorizontalScrollIndicator={false}
             data={this.state.destaque}
             keyExtractor={(item, index) => item.id}
-            renderItem={destaque => <Card key={destaque.id} destaque={destaque} />}
+            renderItem={destaque => (
+              <Card key={destaque.id} destaque={destaque} navigation={this.props.navigation} />
+            )}
           />
         </View>
 
@@ -136,7 +142,9 @@ class Main extends Component {
             showsHorizontalScrollIndicator={false}
             data={this.state.place}
             keyExtractor={(item, index) => item.id}
-            renderItem={place => <CardPlaces key={place.id} destaque={place} />}
+            renderItem={place => (
+              <CardPlaces key={place.id} destaque={place} navigation={this.props.navigation} />
+            )}
           />
         </View>
       </View>

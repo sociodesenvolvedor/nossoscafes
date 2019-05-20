@@ -3,20 +3,39 @@ import {
   createAppContainer,
   createBottomTabNavigator,
   createSwitchNavigator,
+  createStackNavigator,
 } from 'react-navigation';
 
 /* Imports */
 import Ionicons from 'react-native-vector-icons/FontAwesome';
 
-/* Rotas */
+/* Rotas Chave */
 import Main from '~/pages/Main';
 import Explore from '~/pages/Explore';
 import Favourite from '~/pages/Favourite';
 
+/* Rodas Complementares */
+import Places from '~/pages/Places';
+
+const MainStack = createStackNavigator({
+  Home: {
+    screen: Main,
+    navigationOptions: {
+      title: 'Home',
+    },
+  },
+  Places: {
+    screen: Places,
+    navigationOptions: {
+      title: 'Place',
+    },
+  },
+});
+
 const Routes = createBottomTabNavigator(
   {
     Explore,
-    Main,
+    Main: MainStack,
     Favourite,
   },
   {
