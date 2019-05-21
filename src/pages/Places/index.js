@@ -1,23 +1,30 @@
 import React, { Component } from 'react';
 
-import { View, Text, ScrollView, Image, TouchableOpacity, ImageBackground } from 'react-native';
+import {
+  View, Text, ScrollView, Image, TouchableOpacity, ImageBackground,
+} from 'react-native';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import Modal from 'react-native-modal';
 import Icon from 'react-native-vector-icons/FontAwesome';
-
-import ModalCard from '~/pages/Produts';
+import StarRating from 'react-native-star-rating';
 
 import styles from './styles';
 
 class Places extends Component {
   state = {
     isModalVisible: false,
+    starCount: 3.5,
   };
 
-  handleModal = () => this.setState({ isModalVisible: !this.state.isModalVisible});
+  handleModal = () => this.setState({ isModalVisible: !this.state.isModalVisible });
+
+  onStarRatingPress = (rating) => {
+    this.setState({ starCount: rating });
+    alert(`Bom voto de: ${rating}`);
+  };
 
   modal = () => (
     <ScrollView horizontal showsHorizontalScrollIndicator={false}>
@@ -28,10 +35,9 @@ class Places extends Component {
       >
         <ImageBackground
           source={{
-            uri:
-              'https://i.pinimg.com/564x/20/1c/9b/201c9b755cd6ead3d62fdc54d122460e.jpg',
+            uri: 'https://i.pinimg.com/564x/20/1c/9b/201c9b755cd6ead3d62fdc54d122460e.jpg',
           }}
-          imageStyle={{ borderRadius: 15}}
+          imageStyle={{ borderRadius: 15 }}
           style={styles.containerModal}
         >
           <View style={styles.containerModalCenter}>
@@ -40,21 +46,24 @@ class Places extends Component {
               <Text style={styles.titleModal}>Café do bom</Text>
             </View>
 
-            <Text style={styles.textModalCenter}>Under the hood react-native-modal uses react-native original Modal component.
-            Before reporting a bug, try swapping react-native-modal with react-native original Modal component and,
-            if the issue persists, check if it has already been reported as a react-native issue.
+            <Text style={styles.textModalCenter}>
+              Under the hood react-native-modal uses react-native original Modal component. Before
+              reporting a bug, try swapping react-native-modal with react-native original Modal
+              component and, if the issue persists, check if it has already been reported as a
+              react-native issue.
             </Text>
 
             <View style={styles.containerLikes}>
               <View style={styles.likes}>
-                <Icon name="heart" size={12} color="#ffff" />
+                <TouchableOpacity>
+                  <Icon name="heart" size={12} color="#ffff" />
+                </TouchableOpacity>
+
                 <Text style={styles.titleLikes}>123</Text>
               </View>
-              <Icon
-                name="bookmark"
-                size={18}
-                color="#ffff"
-              />
+              <TouchableOpacity>
+                <Icon name="bookmark" size={18} color="#ffff" />
+              </TouchableOpacity>
             </View>
           </View>
         </ImageBackground>
@@ -66,10 +75,9 @@ class Places extends Component {
       >
         <ImageBackground
           source={{
-            uri:
-              'https://i.pinimg.com/564x/20/1c/9b/201c9b755cd6ead3d62fdc54d122460e.jpg',
+            uri: 'https://i.pinimg.com/564x/20/1c/9b/201c9b755cd6ead3d62fdc54d122460e.jpg',
           }}
-          imageStyle={{ borderRadius: 15}}
+          imageStyle={{ borderRadius: 15 }}
           style={styles.containerModal}
         >
           <View style={styles.containerModalCenter}>
@@ -78,9 +86,11 @@ class Places extends Component {
               <Text style={styles.titleModal}>Café do bom</Text>
             </View>
 
-            <Text style={styles.textModalCenter}>Under the hood react-native-modal uses react-native original Modal component.
-            Before reporting a bug, try swapping react-native-modal with react-native original Modal component and,
-            if the issue persists, check if it has already been reported as a react-native issue.
+            <Text style={styles.textModalCenter}>
+              Under the hood react-native-modal uses react-native original Modal component. Before
+              reporting a bug, try swapping react-native-modal with react-native original Modal
+              component and, if the issue persists, check if it has already been reported as a
+              react-native issue.
             </Text>
 
             <View style={styles.containerLikes}>
@@ -88,17 +98,13 @@ class Places extends Component {
                 <Icon name="heart" size={12} color="#ffff" />
                 <Text style={styles.titleLikes}>123</Text>
               </View>
-              <Icon
-                name="bookmark"
-                size={18}
-                color="#ffff"
-              />
+              <Icon name="bookmark" size={18} color="#ffff" />
             </View>
           </View>
         </ImageBackground>
       </Modal>
     </ScrollView>
-  )
+  );
 
   render() {
     return (
@@ -127,21 +133,28 @@ class Places extends Component {
               <Icon style={styles.icon} name="map-marker" size={14} color="#bec2ce" />
               <Text style={styles.textLocal}>Calle de Loidi, 4, 20160 Lasarte</Text>
             </View>
-            <Icon style={styles.icon} name="bookmark" size={14} color="#bec2ce" />
+            <TouchableOpacity>
+              <Icon style={styles.icon} name="bookmark" size={14} color="#bec2ce" />
+            </TouchableOpacity>
           </View>
           <Text style={styles.title}>Climbing Mont Blanc</Text>
           <View style={styles.containerAvaliacao}>
             <View style={styles.containerReview}>
               <View style={styles.flexRow}>
                 <Icon style={styles.icon} name="trophy" size={14} color="#bec2ce" />
-                <Text style={styles.textLocal}>Avaliaçõa Geral - 6123 Avaliações</Text>
+                <Text style={styles.textLocal}>Avaliaçõa Geral</Text>
               </View>
               <View style={styles.flexRow}>
-                <Icon style={styles.icon} name="star" size={14} color="#bec2ce" />
-                <Icon style={styles.icon} name="star" size={14} color="#bec2ce" />
-                <Icon style={styles.icon} name="star" size={14} color="#bec2ce" />
-                <Icon style={styles.icon} name="star" size={14} color="#bec2ce" />
-                <Icon style={styles.icon} name="star" size={14} color="#bec2ce" />
+                <StarRating
+                  disabled={false}
+                  maxStars={5}
+                  starSize={14}
+                  iconSet="FontAwesome"
+                  rating={this.state.starCount}
+                  selectedStar={rating => this.onStarRatingPress(rating)}
+                  fullStarColor="#ffb400"
+                  emptyStarColor="#bec2ce"
+                />
               </View>
             </View>
             <View style={styles.containerReview}>
@@ -150,11 +163,16 @@ class Places extends Component {
                 <Text style={styles.textLocal}>Comida</Text>
               </View>
               <View style={styles.flexRow}>
-                <Icon style={styles.icon} name="star" size={14} color="#bec2ce" />
-                <Icon style={styles.icon} name="star" size={14} color="#bec2ce" />
-                <Icon style={styles.icon} name="star" size={14} color="#bec2ce" />
-                <Icon style={styles.icon} name="star" size={14} color="#bec2ce" />
-                <Icon style={styles.icon} name="star" size={14} color="#bec2ce" />
+                <StarRating
+                  disabled={false}
+                  maxStars={5}
+                  starSize={14}
+                  iconSet="FontAwesome"
+                  rating={this.state.starCount}
+                  selectedStar={rating => this.onStarRatingPress(rating)}
+                  fullStarColor="#ff6c00"
+                  emptyStarColor="#bec2ce"
+                />
               </View>
             </View>
             <View style={styles.containerReview}>
@@ -163,11 +181,16 @@ class Places extends Component {
                 <Text style={styles.textLocal}>Serviços</Text>
               </View>
               <View style={styles.flexRow}>
-                <Icon style={styles.icon} name="star" size={14} color="#bec2ce" />
-                <Icon style={styles.icon} name="star" size={14} color="#bec2ce" />
-                <Icon style={styles.icon} name="star" size={14} color="#bec2ce" />
-                <Icon style={styles.icon} name="star" size={14} color="#bec2ce" />
-                <Icon style={styles.icon} name="star" size={14} color="#bec2ce" />
+                <StarRating
+                  disabled={false}
+                  maxStars={5}
+                  starSize={14}
+                  iconSet="FontAwesome"
+                  rating={this.state.starCount}
+                  selectedStar={rating => this.onStarRatingPress(rating)}
+                  fullStarColor="#ff6c00"
+                  emptyStarColor="#bec2ce"
+                />
               </View>
             </View>
             <View style={styles.containerReview}>
@@ -176,11 +199,16 @@ class Places extends Component {
                 <Text style={styles.textLocal}>Preço</Text>
               </View>
               <View style={styles.flexRow}>
-                <Icon style={styles.icon} name="star" size={14} color="#bec2ce" />
-                <Icon style={styles.icon} name="star" size={14} color="#bec2ce" />
-                <Icon style={styles.icon} name="star" size={14} color="#bec2ce" />
-                <Icon style={styles.icon} name="star" size={14} color="#bec2ce" />
-                <Icon style={styles.icon} name="star" size={14} color="#bec2ce" />
+                <StarRating
+                  disabled={false}
+                  maxStars={5}
+                  starSize={14}
+                  iconSet="FontAwesome"
+                  rating={this.state.starCount}
+                  selectedStar={rating => this.onStarRatingPress(rating)}
+                  fullStarColor="#ff6c00"
+                  emptyStarColor="#bec2ce"
+                />
               </View>
             </View>
             <View style={styles.containerReview}>
@@ -189,11 +217,16 @@ class Places extends Component {
                 <Text style={styles.textLocal}>Ambiente</Text>
               </View>
               <View style={styles.flexRow}>
-                <Icon style={styles.icon} name="star" size={14} color="#bec2ce" />
-                <Icon style={styles.icon} name="star" size={14} color="#bec2ce" />
-                <Icon style={styles.icon} name="star" size={14} color="#bec2ce" />
-                <Icon style={styles.icon} name="star" size={14} color="#bec2ce" />
-                <Icon style={styles.icon} name="star" size={14} color="#bec2ce" />
+                <StarRating
+                  disabled={false}
+                  maxStars={5}
+                  starSize={14}
+                  iconSet="FontAwesome"
+                  rating={this.state.starCount}
+                  selectedStar={rating => this.onStarRatingPress(rating)}
+                  fullStarColor="#ff6c00"
+                  emptyStarColor="#bec2ce"
+                />
               </View>
             </View>
           </View>
@@ -276,7 +309,6 @@ class Places extends Component {
           </View>
         </View>
       </ScrollView>
-
     );
   }
 }

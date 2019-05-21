@@ -57,14 +57,19 @@ class Card extends Component {
 
             <View style={styles.containerLikes}>
               <View style={styles.likes}>
-                <Icon name="heart" size={12} color="#ffff" />
+                <TouchableOpacity>
+                  <Icon name="heart" size={12} color="#ffff" />
+                </TouchableOpacity>
+
                 <Text style={styles.titleLikes}>88783</Text>
               </View>
-              <Icon
-                name="bookmark"
-                size={18}
-                color={this.props.destaque.item.marked ? '#c83434' : '#ffff'}
-              />
+              <TouchableOpacity>
+                <Icon
+                  name="bookmark"
+                  size={18}
+                  color={this.props.destaque.item.marked ? '#c83434' : '#ffff'}
+                />
+              </TouchableOpacity>
             </View>
           </View>
         </ImageBackground>

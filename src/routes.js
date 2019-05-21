@@ -1,5 +1,9 @@
 import React from 'react';
 import {
+  View, Text, ScrollView, Image, TouchableOpacity, ImageBackground,
+} from 'react-native';
+
+import {
   createAppContainer,
   createBottomTabNavigator,
   createSwitchNavigator,
@@ -32,11 +36,26 @@ const MainStack = createStackNavigator({
   },
 });
 
+const MainFavourite = createStackNavigator({
+  Favourite: {
+    screen: Favourite,
+    navigationOptions: {
+      title: 'Favourite',
+    },
+  },
+  Places: {
+    screen: Places,
+    navigationOptions: {
+      title: 'Place',
+    },
+  },
+});
+
 const Routes = createBottomTabNavigator(
   {
     Explore,
     Main: MainStack,
-    Favourite,
+    Favourite: MainFavourite,
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
