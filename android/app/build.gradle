@@ -1,3 +1,14 @@
+buildscript {
+    repositories {
+        maven { url 'https://plugins.gradle.org/m2/' } // Gradle Plugin Portal
+    }
+    dependencies {
+        classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:[0.12.1, 0.99.99]'
+    }
+}
+
+apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
+
 apply plugin: "com.android.application"
 
 import com.android.build.OutputFile
@@ -77,6 +88,7 @@ project.ext.react = [
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
+apply from: "../../node_modules/react-native-code-push/android/codepush.gradle"
 
 /**
  * Set this to true to create two separate APKs instead of one:
@@ -117,7 +129,17 @@ android {
         }
     }
     buildTypes {
+        debug {
+          buildConfigField "String", "CODEPUSH_KEY", '""'
+        }
+
+        releaseStaging {
+          buildConfigField "String", "CODEPUSH_KEY", '"zbbuCfv4q0C00GJ8-OElwCTcTkCFByNeJnZaV"'
+          matchingFallbacks = ['debug', 'release']
+        }
+
         release {
+            buildConfigField "String", "CODEPUSH_KEY", '"9-x56l64w_a4VIbQGUMI-uDakOYvH1ExknbpV"'
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
@@ -138,6 +160,8 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-onesignal')
+    implementation project(':react-native-code-push')
     implementation project(':react-native-maps')
     //   implementation (project(':react-native-maps')){
     //   exclude group: 'com.google.android.gms', module:'play-services-base'
