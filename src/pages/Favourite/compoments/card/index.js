@@ -21,7 +21,7 @@ class Card extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <TouchableOpacity onPress={this.goPage}>
+        <TouchableOpacity onPress={this.goPage} activeOpacity={0.9}>
           <Image
             style={styles.img}
             source={{
@@ -34,19 +34,19 @@ class Card extends Component {
         <View style={styles.containerRight}>
           <View style={styles.containerTitle}>
             <Icon name="map-marker" size={18} color="#000000" />
-            <TouchableOpacity onPress={this.goPage}>
+            <TouchableOpacity onPress={this.goPage} activeOpacity={0.9}>
               <Text style={styles.title}>Caucasus Mountains, Georgia</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.containerLikes}>
             <View style={styles.likes}>
-              <TouchableOpacity>
+              <TouchableOpacity activeOpacity={0.9}>
                 <Icon name="heart" size={18} color="#000000" />
               </TouchableOpacity>
 
               <Text style={styles.nunmber}>9782</Text>
             </View>
-            <TouchableOpacity>
+            <TouchableOpacity activeOpacity={0.9}>
               <Icon name="bookmark" size={18} color="#000000" />
             </TouchableOpacity>
           </View>

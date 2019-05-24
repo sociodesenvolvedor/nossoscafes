@@ -18,9 +18,7 @@ class Card extends Component {
     text: 'Search',
   };
 
-  componentWillMount() {
-    console.tron.log(this.props);
-  }
+  componentWillMount() {}
 
   goPage = () => {
     this.props.navigation.navigate('Places');
@@ -28,7 +26,7 @@ class Card extends Component {
 
   render() {
     return (
-      <TouchableOpacity onPress={() => this.goPage()}>
+      <TouchableOpacity onPress={() => this.goPage()} activeOpacity={0.9}>
         <ImageBackground
           source={{
             uri: `${this.props.destaque.item.img}`,
@@ -44,12 +42,12 @@ class Card extends Component {
 
             <View style={styles.containerLikes}>
               <View style={styles.likes}>
-                <TouchableOpacity>
+                <TouchableOpacity activeOpacity={0.9}>
                   <Icon name="heart" size={12} color="#ffff" />
                 </TouchableOpacity>
                 <Text style={styles.titleLikes}>{this.props.destaque.item.likes}</Text>
               </View>
-              <TouchableOpacity>
+              <TouchableOpacity activeOpacity={0.9}>
                 <Icon
                   name="bookmark"
                   size={18}

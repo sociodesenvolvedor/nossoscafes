@@ -100,9 +100,7 @@ class Main extends Component {
     ],
   };
 
-  componentWillMount() {
-    // console.tron.log(this.props);
-  }
+  componentWillMount() {}
 
   top = () => (
     <View style={styles.top}>

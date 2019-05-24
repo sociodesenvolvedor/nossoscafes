@@ -4,9 +4,11 @@ import {
   View, Button, Image, Text,
 } from 'react-native';
 
-import { bindActionCreators } from 'redux';
-
+/* Redux */
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import ExploreActions from '~/store/ducks/explore';
+
 
 import MapView from 'react-native-maps';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -15,6 +17,7 @@ import styles from './styles';
 
 class Explore extends Component {
   state = {
+    teste: 'a',
     region: null,
     marker: [
       {
@@ -42,7 +45,14 @@ class Explore extends Component {
     ],
   };
 
+  componentWillMount() {
+    this.props.exploreRequest();
+  }
+
+
   async componentDidMount() {
+    // console.tron.error(this.props);
+
     navigator.geolocation.getCurrentPosition(
       async ({ coords: { latitude, longitude } }) => {
         // const response = await Geocoder.from({ latitude, longitude });
@@ -90,7 +100,10 @@ class Explore extends Component {
               description={mk.description}
             >
               <Image
-                source={{ uri: 'https://facebook.github.io/react/logo-og.png' }}
+                source={{
+                  uri:
+                    'https://images.unsplash.com/photo-1558417991-1dc2ed5b006b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1521&q=80',
+                }}
                 style={styles.logo}
               />
               <MapView.Callout style={styles.callout} tooltip>
@@ -118,12 +131,13 @@ class Explore extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  explore: state.explore,
+});
 
-// const mapDispatchToProps = dispatch =>
-//   bindActionCreators(Actions, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators(ExploreActions, dispatch);
 
 export default connect(
   mapStateToProps,
-  // mapDispatchToProps
+  mapDispatchToProps,
 )(Explore);

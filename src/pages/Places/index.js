@@ -55,13 +55,13 @@ class Places extends Component {
 
             <View style={styles.containerLikes}>
               <View style={styles.likes}>
-                <TouchableOpacity>
+                <TouchableOpacity activeOpacity={0.9}>
                   <Icon name="heart" size={12} color="#ffff" />
                 </TouchableOpacity>
 
                 <Text style={styles.titleLikes}>123</Text>
               </View>
-              <TouchableOpacity>
+              <TouchableOpacity activeOpacity={0.9}>
                 <Icon name="bookmark" size={18} color="#ffff" />
               </TouchableOpacity>
             </View>
@@ -114,7 +114,7 @@ class Places extends Component {
           <Image
             source={{
               uri:
-                'http://s3.amazonaws.com/img.iluria.com/user_layout_theme/24E4E/slideshow1.jpg?r=0.612025',
+                'https://images.unsplash.com/photo-1551462577-9aaf3ff5d927?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1056&q=80',
             }}
             style={styles.hero}
           />
@@ -133,7 +133,7 @@ class Places extends Component {
               <Icon style={styles.icon} name="map-marker" size={14} color="#bec2ce" />
               <Text style={styles.textLocal}>Calle de Loidi, 4, 20160 Lasarte</Text>
             </View>
-            <TouchableOpacity>
+            <TouchableOpacity activeOpacity={0.9}>
               <Icon style={styles.icon} name="bookmark" size={14} color="#bec2ce" />
             </TouchableOpacity>
           </View>
@@ -297,11 +297,11 @@ class Places extends Component {
 
           <View style={styles.containerDestaque}>
             <Text style={styles.title}>Destaques</Text>
-            <TouchableOpacity onPress={this.handleModal}>
+            <TouchableOpacity onPress={this.handleModal} activeOpacity={0.9}>
               <Image
                 source={{
                   uri:
-                    'http://s3.amazonaws.com/img.iluria.com/user_layout_theme/24E4E/slideshow1.jpg?r=0.612025',
+                    'https://images.unsplash.com/photo-1551462577-9aaf3ff5d927?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1056&q=80',
                 }}
                 style={styles.banner}
               />

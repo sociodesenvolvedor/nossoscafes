@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux';
 
+import { reducer as explore } from './explore';
+
 const reducers = combineReducers({
-  // Remova essa linha depois de adicionar seus ducks
-  example: () => [],
+  explore,
 });
 
 export default reducers;
