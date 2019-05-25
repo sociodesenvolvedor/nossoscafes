@@ -46,13 +46,13 @@ class Explore extends Component {
   };
 
   componentWillMount() {
-    this.props.exploreRequest();
   }
 
+  alerta = () => (this.props.exploreRequest());
 
   async componentDidMount() {
-    // console.tron.error(this.props);
-
+    const { exploreRequest } = this.props;
+    exploreRequest();
     navigator.geolocation.getCurrentPosition(
       async ({ coords: { latitude, longitude } }) => {
         // const response = await Geocoder.from({ latitude, longitude });
@@ -81,8 +81,21 @@ class Explore extends Component {
     const {
       region, destination, duration, location,
     } = this.state;
+    const { explore, loading } = this.props;
     return (
       <View style={{ flex: 1 }}>
+        <Button
+          onPress={this.alerta}
+          title={explore.loading === true ? "carregando" : "ok"}
+          color="#841584"
+          accessibilityLabel="btn"
+        />
+        {
+        explore.data !== null
+          ? explore.data.map( xp => <Text>{ xp.id}</Text>)
+          : <Text>Carregando</Text>
+        }
+
         <MapView
           style={{ flex: 1 }}
           initialRegion={region}
@@ -91,12 +104,12 @@ class Explore extends Component {
           loadingEnabled
           showsTraffic
           onLongPress={e => alert(e.nativeEvent)}
-        >
-          {this.state.marker.map(mk => (
+        >   
+          {explore.data.map(mk => (
             <MapView.Marker
               key={mk.id}
-              coordinate={mk.local}
-              title={mk.title}
+              coordinate={mk.address[0]}
+              title={mk.name}
               description={mk.description}
             >
               <Image
@@ -108,12 +121,8 @@ class Explore extends Component {
               />
               <MapView.Callout style={styles.callout} tooltip>
                 <View style={styles.container}>
-                  <Text style={styles.title}>Nome do lugar</Text>
-                  <Text style={styles.description}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas auctor libero
-                    libero, fringilla faucibus leo sagittis sed. Sed sodales, est vel vulputate
-                    rhoncus, dolor turpis vulputate risus, id feugia
-                  </Text>
+                  <Text style={styles.title}>{mk.name}</Text>
+                  <Text style={styles.description}>{mk.description}</Text>
                   <View style={styles.containerLikes}>
                     <View style={styles.likes}>
                       <Icon name="heart" size={18} color="#000000" />

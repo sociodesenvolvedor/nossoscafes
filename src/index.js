@@ -5,6 +5,8 @@ import OneSignal from 'react-native-onesignal';
 import '~/config/ReactotronConfig';
 
 import { Provider } from 'react-redux';
+import { persistStore, persistReducer } from 'redux-persist';
+import { PersistGate } from 'redux-persist/integration/react';
 import store from './store';
 
 import Routes from '~/routes';

@@ -10,11 +10,15 @@ export { Types };
 export default Creators;
 
 /* Initial State */
-export const INITIAL_STATE = { data: '' };
+export const INITIAL_STATE = { data: [], loading: false };
 
 /* Reducers */
-export const exploreRequest = state => ({ ...state });
-export const exploreAccept = (state, action) => ({ ...state, data: action.response });
+export const exploreRequest = state => ({ ...state, loading: true });
+export const exploreAccept = (state, action) => ({
+  ...state,
+  data: action.response,
+  loading: false,
+});
 export const exploreRequestFail = state => ({ ...state });
 
 /* Reducers to Types */
