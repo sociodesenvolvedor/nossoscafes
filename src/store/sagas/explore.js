@@ -7,7 +7,7 @@ import Explore from '~/store/ducks/explore';
 
 /* Get Explore */
 export function* getExplore() {
-  const response = yield call(api.get, 'coffeesShops');
+  const response = yield call(api.get, '/coffeesShops');
   switch (response.status) {
     case 200:
       yield put(Explore.exploreAccept(response.data.data));
